@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+:root {
+  --background: #051F20;
+  --foreground: #DAF1DE;
+  
+  --locais-900: #051F20;
+  --locais-800: #082B26;
+  --locais-700: #153832;
+  --locais-600: #235347;
+  --locais-400: #8EB69B;
+  --locais-100: #DAF1DE;
+  
+  /* Earthy Palette for Accordion */
+  --color-terracotta: #A95A42;
+  --color-sand: #D4C4A8;
+  --color-sage: #6B8E78;
+  --color-gold: #BFA054;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-locais-900: var(--locais-900);
+  --color-locais-800: var(--locais-800);
+  --color-locais-700: var(--locais-700);
+  --color-locais-600: var(--locais-600);
+  --color-locais-400: var(--locais-400);
+  --color-locais-100: var(--locais-100);
+  
+  --color-terracotta: var(--color-terracotta);
+  --color-sand: var(--color-sand);
+  --color-sage: var(--color-sage);
+  --color-gold: var(--color-gold);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-playfair), serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+::selection {
+  background: var(--locais-600);
+  color: #fff;
+}
