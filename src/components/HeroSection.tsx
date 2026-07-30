@@ -74,9 +74,9 @@ export default function HeroSection() {
 
   const variants = {
     enter: (direction: number) => ({
-      x: direction > 0 ? 1000 : -1000,
+      x: direction > 0 ? "100vw" : "-100vw",
       opacity: 0,
-      rotateY: direction > 0 ? 45 : -45,
+      rotateY: direction > 0 ? 15 : -15,
       scale: 0.8
     }),
     center: {
@@ -88,9 +88,9 @@ export default function HeroSection() {
     },
     exit: (direction: number) => ({
       zIndex: 0,
-      x: direction < 0 ? 1000 : -1000,
+      x: direction < 0 ? "100vw" : "-100vw",
       opacity: 0,
-      rotateY: direction < 0 ? 45 : -45,
+      rotateY: direction < 0 ? 15 : -15,
       scale: 0.8
     })
   };
@@ -146,6 +146,7 @@ export default function HeroSection() {
               rotateY: { duration: 0.6 }
             }}
             className="absolute inset-0 flex flex-col items-center justify-center pt-10 md:pt-0"
+            style={{ willChange: "transform, opacity" }}
           >
             {/* 3D Floating Product Container */}
             <motion.div 
@@ -154,7 +155,7 @@ export default function HeroSection() {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
             >
               {/* Product Image */}
-              <div className="absolute inset-0 z-30 drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] flex items-center justify-center">
+              <div className="absolute inset-0 z-30 md:drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] flex items-center justify-center">
                  <Image 
                     src={currentSlide.image} 
                     alt={currentSlide.subtitle}
@@ -168,12 +169,14 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [-20, 20, -20], rotate: [0, 15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-white/20 rounded-full blur-3xl opacity-60 z-20"
+                className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
+                style={{ willChange: "transform" }}
               />
               <motion.div
                  animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }}
                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                 className="absolute bottom-10 left-0 w-32 h-32 md:w-48 md:h-48 bg-black/20 rounded-full blur-3xl opacity-40 z-20"
+                 className="absolute bottom-10 left-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
+                 style={{ willChange: "transform" }}
               />
             </motion.div>
           </motion.div>
