@@ -12,7 +12,7 @@ const menuItems = [
     price: "SAR 35",
     desc: "Layers of caramelized honey sponge and velvety sour cream frosting.",
     image: "/images/honey_cake_1785415872758_transparent.png",
-    bgColor: "bg-terracotta",
+    bgColor: "bg-gradient-to-b from-terracotta to-[#753c2b]",
     textColor: "text-white",
   },
   {
@@ -21,7 +21,7 @@ const menuItems = [
     price: "SAR 38",
     desc: "Traditional Russian recipe with a delicate crumb coating.",
     image: "/images/medovik_1785415886099_transparent.png",
-    bgColor: "bg-sand",
+    bgColor: "bg-gradient-to-b from-sand to-[#b5a386]",
     textColor: "text-locais-900",
   },
   {
@@ -30,7 +30,7 @@ const menuItems = [
     price: "SAR 22",
     desc: "Premium roasted beans crafted to perfection by our master baristas.",
     image: "/images/specialty_coffee_1785415898575_transparent.png",
-    bgColor: "bg-sage",
+    bgColor: "bg-gradient-to-b from-sage to-[#4a6353]",
     textColor: "text-white",
   },
   {
@@ -39,7 +39,7 @@ const menuItems = [
     price: "SAR 18",
     desc: "Flaky, buttery perfection baked fresh every morning.",
     image: "/images/croissant_1785415912494_transparent.png",
-    bgColor: "bg-gold",
+    bgColor: "bg-gradient-to-b from-gold to-[#94783b]",
     textColor: "text-locais-900",
   },
 ];
@@ -119,11 +119,14 @@ export default function MenuHighlights() {
                       className="absolute inset-0 top-0 bottom-32 md:bottom-40 flex items-center justify-center pointer-events-none"
                     >
                       <div className="relative w-[180px] h-[180px] md:w-full md:h-full max-w-[400px] max-h-[400px]">
+                         {/* High-Performance Ground Cast Shadow */}
+                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.6)_0%,transparent_60%)] scale-y-[0.3] translate-y-[80px] md:translate-y-[120px] z-0" />
+                         
                          <Image 
                            src={item.image} 
                            alt={item.title} 
                            fill
-                           className="object-contain md:drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] scale-[1.1] md:scale-[1.2]"
+                           className="object-contain relative z-10 md:drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] scale-[1.1] md:scale-[1.2]"
                          />
                       </div>
                     </motion.div>

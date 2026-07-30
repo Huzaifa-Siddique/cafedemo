@@ -156,11 +156,14 @@ export default function HeroSection() {
             >
               {/* Product Image */}
               <div className="absolute inset-0 z-30 md:drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] flex items-center justify-center">
+                 {/* High-Performance Ground Cast Shadow */}
+                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,transparent_60%)] scale-y-[0.3] translate-y-[120px] sm:translate-y-[160px] z-0" />
+                 
                  <Image 
                     src={currentSlide.image} 
                     alt={currentSlide.subtitle}
                     fill
-                    className={`object-contain ${currentSlide.scaleClass}`}
+                    className={`object-contain relative z-10 ${currentSlide.scaleClass}`}
                     priority
                  />
               </div>
