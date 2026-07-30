@@ -169,13 +169,13 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [-20, 20, -20], rotate: [0, 15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
+                className="hidden md:block absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
                 style={{ willChange: "transform" }}
               />
               <motion.div
                  animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }}
                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                 className="absolute bottom-10 left-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
+                 className="hidden md:block absolute bottom-10 left-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
                  style={{ willChange: "transform" }}
               />
             </motion.div>

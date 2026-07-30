@@ -51,7 +51,7 @@ export default function MenuHighlights() {
     <div id="menu" className="relative w-full bg-locais-900 pt-32 pb-32 overflow-hidden">
       
       {/* Abstract Colorful Background Blobs */}
-      <div className="absolute inset-0 z-0 opacity-40 pointer-events-none">
+      <div className="hidden md:block absolute inset-0 z-0 opacity-40 pointer-events-none">
          <motion.div 
            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
@@ -88,6 +88,7 @@ export default function MenuHighlights() {
                 flex: isHovered ? 4 : 1,
               }}
               transition={{ duration: 0.5, ease: [0.32, 0.72, 0, 1] }}
+              style={{ willChange: "flex, transform" }}
             >
               {/* Title (when not hovered) */}
               <motion.div
@@ -122,7 +123,7 @@ export default function MenuHighlights() {
                            src={item.image} 
                            alt={item.title} 
                            fill
-                           className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] scale-[1.1] md:scale-[1.2]"
+                           className="object-contain md:drop-shadow-[0_20px_30px_rgba(0,0,0,0.3)] scale-[1.1] md:scale-[1.2]"
                          />
                       </div>
                     </motion.div>
@@ -132,7 +133,7 @@ export default function MenuHighlights() {
                       initial={{ y: 20, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
                       transition={{ delay: 0.3 }}
-                      className={`relative z-10 ${item.textColor} bg-black/5 backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-white/10 shadow-xl`}
+                      className={`relative z-10 ${item.textColor} bg-black/10 md:bg-black/5 md:backdrop-blur-sm p-4 md:p-6 rounded-2xl border border-white/10 shadow-xl`}
                     >
                       <div className="flex justify-between items-end mb-2 md:mb-4">
                         <h3 className="font-display text-xl md:text-3xl lg:text-4xl leading-tight drop-shadow-md">
