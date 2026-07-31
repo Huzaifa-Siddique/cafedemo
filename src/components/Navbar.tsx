@@ -52,6 +52,7 @@ export default function Navbar() {
         {/* Language Toggle */}
         <button
           onClick={toggleLanguage}
+          aria-label={locale === "en" ? "Switch to Arabic" : "Switch to English"}
           className="text-white/80 hover:text-white font-medium text-sm border border-white/20 rounded-full px-3 py-1 transition-colors bg-white/5"
         >
           {locale === "en" ? "عربي" : "EN"}
@@ -59,7 +60,12 @@ export default function Navbar() {
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-white/80 hover:text-white p-2">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            aria-label="Toggle menu"
+            aria-expanded={isOpen}
+            className="text-white/80 hover:text-white p-2"
+          >
             {isOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18"></line>

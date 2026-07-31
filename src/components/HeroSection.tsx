@@ -122,6 +122,7 @@ export default function HeroSection() {
         {/* Navigation Arrows */}
         <button 
           onClick={prevSlide}
+          aria-label="Previous signature creation"
           className={`absolute start-4 md:start-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
         >
           {locale === "ar" ? <ChevronRight size={32} /> : <ChevronLeft size={32} />}
@@ -129,6 +130,7 @@ export default function HeroSection() {
 
         <button 
           onClick={nextSlide}
+          aria-label="Next signature creation"
           className={`absolute end-4 md:end-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
         >
           {locale === "ar" ? <ChevronLeft size={32} /> : <ChevronRight size={32} />}
