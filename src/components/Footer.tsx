@@ -52,7 +52,6 @@ export default function Footer() {
       {/* Copyright */}
       <div className="w-full max-w-4xl border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-locais-400">
         <p>&copy; {new Date().getFullYear()} {t.footer.rights}</p>
-        <p dir="ltr">Made with ❤️</p>
       </div>
     </footer>
   );
