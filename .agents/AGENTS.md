@@ -17,3 +17,20 @@
 
 ## Glassmorphism Defaults
 - **Always Active by Default**: Unless explicitly instructed otherwise by the user, if a "glass effect" or "glassmorphism" (iPhone X style) is requested for a navbar, apply it universally (`bg-black/30 backdrop-blur-xl`) on load, not conditionally on scroll.
+
+## Debugging & Root Cause Analysis
+- **Never Guess**: When faced with a bug (e.g., a missing image or lagging animation), never guess the cause or blindly apply fixes based on assumptions. Always systematically verify the state (e.g., check CSS blending modes, z-indexes, or network logs) before concluding the root cause.
+- **"Be Real"**: Provide honest, verified explanations to the user rather than hypothetical reasons.
+
+## Mobile Web Performance (Zero-Lag UX)
+- **Avoid Live Filters**: Never use `blur-[]`, `backdrop-blur`, or `drop-shadow` on large, moving, or animated elements. These instantly cause severe GPU lag (frame dropping) on mobile devices (e.g., Safari on iPhone).
+- **Fake Depth**: To achieve premium depth without lag, use static ground cast shadows (squashed `radial-gradient`), deep vertical gradients (`bg-gradient-to-b`), and global static noise textures (e.g., a repeating `noise.png` overlay).
+- **Hardware Acceleration**: Always add `will-change: transform` to heavily animated wrappers and use viewport units (`100vw`) rather than massive absolute pixel values (e.g., `1000px`) for translations.
+
+## Proactive Senior Engineering
+- **Anticipate Domain Needs**: Never act as a mere "code executor". Always analyze the geographical, cultural, and domain context of the project. 
+- **Suggest Critical Missing Features**: Proactively suggest standard features that the user may have forgotten before starting work. For example:
+  - Middle Eastern sites: Require Arabic i18n and full RTL support.
+  - Government/Public sites: Require strict WCAG accessibility standards.
+  - E-commerce: Require loading states, error boundaries, and transactional emails.
+- **Be Helpful**: Bring these suggestions up early and clearly to save the user time and ensure the architecture supports them from day one.

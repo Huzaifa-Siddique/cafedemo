@@ -1,31 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function LocationAndReviews() {
+  const { t, locale } = useLanguage();
   return (
-    <section className="relative w-full bg-locais-900 py-24 px-4 md:px-8 border-t border-white/5">
+    <section id="location" className="relative w-full bg-locais-900 py-24 px-4 md:px-8 border-t border-white/5">
       <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row gap-12 md:gap-24 items-center">
         
         {/* Text Content */}
         <motion.div 
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: locale === "ar" ? 50 : -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
           className="flex-1"
         >
           <h2 className="font-display text-5xl md:text-6xl lg:text-7xl mb-8 leading-tight drop-shadow-md">
-            A New Spot in <br/>
-            <span className="italic text-sage">Downtown</span>
+            {t.location.title} <br/>
+            <span className="italic text-sage">{t.location.subtitle}</span>
           </h2>
           
-          <p className="font-sans text-locais-300 text-lg md:text-xl mb-8 max-w-lg leading-relaxed">
-            Loving our new spot, cozier and quieter than ever. We believe in exceptional service, delicious bakery items, and a chill atmosphere perfect for relaxing or enjoying a good conversation.
+          <p className="font-sans text-locais-300 text-lg md:text-xl mb-4 max-w-lg leading-relaxed">
+            {t.location.address}
           </p>
 
           <p className="font-sans text-locais-400 text-base md:text-lg mb-12 max-w-lg leading-relaxed">
-            Our baristas are dedicated to serving the finest coffee, while our bakers ensure every dessert is absolutely mouthwatering. Whether you choose our outdoor seating or our cozy interior, you'll feel right at home.
+            {t.location.hours}
           </p>
           
           <div className="flex gap-4">
@@ -35,7 +37,7 @@ export default function LocationAndReviews() {
               rel="noopener noreferrer"
               className="px-8 py-4 bg-locais-100 text-locais-900 rounded-full font-medium hover:bg-white transition-colors border border-transparent"
             >
-              Get Directions
+              {locale === "ar" ? "احصل على الاتجاهات" : "Get Directions"}
             </a>
             <a 
               href="https://www.instagram.com/locais.sa?igshid=MzRlODBiNWFlZA%3D%3D"

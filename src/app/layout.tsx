@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Inter, Playfair_Display, Cairo } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "../context/LanguageContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -10,6 +11,11 @@ const inter = Inter({
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
+});
+
+const cairo = Cairo({
+  variable: "--font-cairo",
+  subsets: ["arabic", "latin"],
 });
 
 export const metadata: Metadata = {
@@ -25,9 +31,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${playfair.variable} scroll-smooth antialiased bg-locais-900 text-locais-100`}
+      className={`${inter.variable} ${playfair.variable} ${cairo.variable} scroll-smooth antialiased bg-locais-900 text-locais-100`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   );
 }

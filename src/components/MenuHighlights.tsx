@@ -4,74 +4,75 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import WaveDivider from "./WaveDivider";
-
-const menuItems = [
-  {
-    id: "honey-cake",
-    title: "Signature Honey Cake",
-    price: "SAR 35",
-    desc: "Layers of caramelized honey sponge and velvety sour cream frosting.",
-    image: "/images/honey_cake_1785415872758_transparent.png",
-    bgColor: "bg-gradient-to-b from-terracotta to-[#753c2b]",
-    textColor: "text-white",
-  },
-  {
-    id: "medovik",
-    title: "Classic Medovik",
-    price: "SAR 38",
-    desc: "Traditional Russian recipe with a delicate crumb coating.",
-    image: "/images/medovik_1785415886099_transparent.png",
-    bgColor: "bg-gradient-to-b from-sand to-[#b5a386]",
-    textColor: "text-locais-900",
-  },
-  {
-    id: "coffee",
-    title: "Specialty Coffee",
-    price: "SAR 22",
-    desc: "Premium roasted beans crafted to perfection by our master baristas.",
-    image: "/images/specialty_coffee_1785415898575_transparent.png",
-    bgColor: "bg-gradient-to-b from-sage to-[#4a6353]",
-    textColor: "text-white",
-  },
-  {
-    id: "croissant",
-    title: "Fresh Croissant",
-    price: "SAR 18",
-    desc: "Flaky, buttery perfection baked fresh every morning.",
-    image: "/images/croissant_1785415912494_transparent.png",
-    bgColor: "bg-gradient-to-b from-gold to-[#94783b]",
-    textColor: "text-locais-900",
-  },
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function MenuHighlights() {
+  const { locale, t } = useLanguage();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
+
+  const menuItems = [
+    {
+      id: "honey-cake",
+      title: locale === "ar" ? "كيكة العسل المميزة" : "Signature Honey Cake",
+      price: locale === "ar" ? "٣٥ ريال" : "SAR 35",
+      desc: locale === "ar" ? "طبقات من كيكة العسل المكرملة وتغطية الكريمة الحامضة المخملية." : "Layers of caramelized honey sponge and velvety sour cream frosting.",
+      image: "/images/honey_cake_1785415872758_transparent.png",
+      bgColor: "bg-gradient-to-b from-terracotta to-[#753c2b]",
+      textColor: "text-white",
+    },
+    {
+      id: "medovik",
+      title: locale === "ar" ? "ميدوفيك الكلاسيكية" : "Classic Medovik",
+      price: locale === "ar" ? "٣٨ ريال" : "SAR 38",
+      desc: locale === "ar" ? "وصفة روسية تقليدية مع طبقة رقيقة من الفتات." : "Traditional Russian recipe with a delicate crumb coating.",
+      image: "/images/medovik_1785415886099_transparent.png",
+      bgColor: "bg-gradient-to-b from-sand to-[#b5a386]",
+      textColor: "text-locais-900",
+    },
+    {
+      id: "coffee",
+      title: locale === "ar" ? "قهوة مختصة" : "Specialty Coffee",
+      price: locale === "ar" ? "٢٢ ريال" : "SAR 22",
+      desc: locale === "ar" ? "حبوب بن محمصة بعناية ومحضرة بإتقان بواسطة خبراء القهوة لدينا." : "Premium roasted beans crafted to perfection by our master baristas.",
+      image: "/images/specialty_coffee_1785415898575_transparent.png",
+      bgColor: "bg-gradient-to-b from-sage to-[#4a6353]",
+      textColor: "text-white",
+    },
+    {
+      id: "croissant",
+      title: locale === "ar" ? "كرواسون طازج" : "Fresh Croissant",
+      price: locale === "ar" ? "١٨ ريال" : "SAR 18",
+      desc: locale === "ar" ? "طبقات هشة ومقرمشة تُخبز طازجة كل صباح." : "Flaky, buttery perfection baked fresh every morning.",
+      image: "/images/croissant_1785415912494_transparent.png",
+      bgColor: "bg-gradient-to-b from-gold to-[#94783b]",
+      textColor: "text-locais-900",
+    },
+  ];
 
   return (
     <div id="menu" className="relative w-full bg-locais-900 pt-32 pb-32 overflow-hidden">
       
-      {/* Abstract Colorful Background Blobs */}
       <div className="hidden md:block absolute inset-0 z-0 opacity-40 pointer-events-none">
          <motion.div 
            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-           className="absolute -top-1/4 -right-1/4 w-[800px] h-[800px] bg-terracotta rounded-full blur-[120px]" 
+           className="absolute -top-1/4 -end-1/4 w-[800px] h-[800px] bg-terracotta rounded-full blur-[120px]" 
          />
          <motion.div 
            animate={{ rotate: -360, scale: [1, 1.2, 1] }}
            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-           className="absolute top-1/3 -left-1/4 w-[600px] h-[600px] bg-sage rounded-full blur-[100px]" 
+           className="absolute top-1/3 -start-1/4 w-[600px] h-[600px] bg-sage rounded-full blur-[100px]" 
          />
          <motion.div 
            animate={{ y: [0, -50, 0] }}
            transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
-           className="absolute -bottom-1/4 right-1/4 w-[700px] h-[700px] bg-gold rounded-[40%_60%_70%_30%] blur-[100px]" 
+           className="absolute -bottom-1/4 end-1/4 w-[700px] h-[700px] bg-gold rounded-[40%_60%_70%_30%] blur-[100px]" 
          />
       </div>
 
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-8 mb-12">
          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-locais-100 mb-4 text-center drop-shadow-lg">
-           Signature <span className="italic text-terracotta">Creations</span>
+           {t.menuHighlights.title} <span className="italic text-terracotta">{t.menuHighlights.subtitle}</span>
          </h2>
       </div>
 
@@ -120,7 +121,7 @@ export default function MenuHighlights() {
                     >
                       <div className="relative w-[180px] h-[180px] md:w-full md:h-full max-w-[400px] max-h-[400px]">
                          {/* High-Performance Ground Cast Shadow */}
-                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.6)_0%,transparent_60%)] scale-y-[0.3] translate-y-[80px] md:translate-y-[120px] z-0" />
+                         <div className="absolute top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.6)_0%,transparent_60%)] scale-y-[0.3] translate-y-[80px] md:translate-y-[120px] z-0" />
                          
                          <Image 
                            src={item.image} 
@@ -142,7 +143,7 @@ export default function MenuHighlights() {
                         <h3 className="font-display text-xl md:text-3xl lg:text-4xl leading-tight drop-shadow-md">
                           {item.title}
                         </h3>
-                        <span className="font-sans font-bold text-lg md:text-xl drop-shadow-md whitespace-nowrap ml-4">{item.price}</span>
+                        <span className="font-sans font-bold text-lg md:text-xl drop-shadow-md whitespace-nowrap ms-4">{item.price}</span>
                       </div>
                       <p className="font-sans text-xs md:text-base opacity-90 max-w-sm mb-4 md:mb-6 drop-shadow-sm">
                         {item.desc}
@@ -162,7 +163,7 @@ export default function MenuHighlights() {
            onClick={() => document.getElementById('full-menu')?.scrollIntoView({ behavior: 'smooth' })}
            className="px-8 py-4 bg-terracotta text-white rounded-full font-sans font-medium shadow-[0_10px_30px_rgba(169,90,66,0.3)] hover:scale-105 transition-transform border border-white/10"
          >
-           View Full Menu
+           {t.menuHighlights.viewFull}
          </button>
       </div>
       

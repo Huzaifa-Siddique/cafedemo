@@ -4,61 +4,63 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
-const slides = [
-  {
-    id: "coffee",
-    title: "Signature Locais Coffee",
-    subtitle: "A smooth, rich blend crafted to perfection.",
-    desc: "Experience perfectly crafted beverages and exquisite desserts in the heart of Al Aqiq.",
-    image: "/images/real_internet_coffee.png",
-    bgColor: "bg-[#051F20]",
-    textColor: "text-white",
-    accentText: "text-locais-400",
-    bgText: "text-locais-600/30",
-    scaleClass: "scale-75 md:scale-90 translate-y-8",
-  },
-  {
-    id: "honey",
-    title: "H O N E Y",
-    subtitle: "Signature Honey Cake",
-    desc: "Layers of caramelized honey sponge and velvety sour cream frosting.",
-    image: "/images/honey_cake_1785415872758_transparent.png",
-    bgColor: "bg-[#A95A42]", 
-    textColor: "text-white",
-    accentText: "text-white",
-    bgText: "text-white/20",
-    scaleClass: "scale-[1.2] md:scale-[1.3]",
-  },
-  {
-    id: "medovik",
-    title: "M E D O V I K",
-    subtitle: "Classic Medovik",
-    desc: "Traditional Russian recipe with a delicate crumb coating.",
-    image: "/images/medovik_1785415886099_transparent.png",
-    bgColor: "bg-[#D4C4A8]",
-    textColor: "text-locais-900",
-    accentText: "text-terracotta",
-    bgText: "text-locais-900/10",
-    scaleClass: "scale-[1.2] md:scale-[1.3]",
-  },
-  {
-    id: "croissant",
-    title: "F R E S H",
-    subtitle: "Morning Croissant",
-    desc: "Flaky, buttery perfection baked fresh every single morning.",
-    image: "/images/croissant_1785415912494_transparent.png",
-    bgColor: "bg-[#BFA054]",
-    textColor: "text-locais-900",
-    accentText: "text-white",
-    bgText: "text-white/30",
-    scaleClass: "scale-[1.2] md:scale-[1.3]",
-  }
-];
+import { useLanguage } from "../context/LanguageContext";
 
 export default function HeroSection() {
+  const { locale, t } = useLanguage();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+
+  const slides = [
+    {
+      id: "coffee",
+      title: locale === "ar" ? "قهوة لوكايس" : "Signature Locais Coffee",
+      subtitle: locale === "ar" ? "مزيج غني ومحضر بإتقان." : "A smooth, rich blend crafted to perfection.",
+      desc: t.hero.subtitle,
+      image: "/images/real_internet_coffee.png",
+      bgColor: "bg-[#051F20]",
+      textColor: "text-white",
+      accentText: "text-locais-400",
+      bgText: "text-locais-600/30",
+      scaleClass: "scale-75 md:scale-90 translate-y-8",
+    },
+    {
+      id: "honey",
+      title: locale === "ar" ? "ع س ل" : "H O N E Y",
+      subtitle: locale === "ar" ? "كيكة العسل المميزة" : "Signature Honey Cake",
+      desc: locale === "ar" ? "طبقات من كيكة العسل المكرملة وتغطية الكريمة الحامضة المخملية." : "Layers of caramelized honey sponge and velvety sour cream frosting.",
+      image: "/images/honey_cake_1785415872758_transparent.png",
+      bgColor: "bg-[#A95A42]", 
+      textColor: "text-white",
+      accentText: "text-white",
+      bgText: "text-white/20",
+      scaleClass: "scale-[1.2] md:scale-[1.3]",
+    },
+    {
+      id: "medovik",
+      title: locale === "ar" ? "ميدوفيك" : "M E D O V I K",
+      subtitle: locale === "ar" ? "ميدوفيك الكلاسيكية" : "Classic Medovik",
+      desc: locale === "ar" ? "وصفة روسية تقليدية مع طبقة رقيقة من الفتات." : "Traditional Russian recipe with a delicate crumb coating.",
+      image: "/images/medovik_1785415886099_transparent.png",
+      bgColor: "bg-[#D4C4A8]",
+      textColor: "text-locais-900",
+      accentText: "text-terracotta",
+      bgText: "text-locais-900/10",
+      scaleClass: "scale-[1.2] md:scale-[1.3]",
+    },
+    {
+      id: "croissant",
+      title: locale === "ar" ? "ط ا ز ج" : "F R E S H",
+      subtitle: locale === "ar" ? "كرواسون الصباح" : "Morning Croissant",
+      desc: locale === "ar" ? "طبقات هشة ومقرمشة تُخبز طازجة كل صباح." : "Flaky, buttery perfection baked fresh every single morning.",
+      image: "/images/croissant_1785415912494_transparent.png",
+      bgColor: "bg-[#BFA054]",
+      textColor: "text-locais-900",
+      accentText: "text-white",
+      bgText: "text-white/30",
+      scaleClass: "scale-[1.2] md:scale-[1.3]",
+    }
+  ];
 
   const nextSlide = () => {
     setDirection(1);
@@ -120,16 +122,16 @@ export default function HeroSection() {
         {/* Navigation Arrows */}
         <button 
           onClick={prevSlide}
-          className={`absolute left-4 md:left-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
+          className={`absolute start-4 md:start-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
         >
-          <ChevronLeft size={32} />
+          {locale === "ar" ? <ChevronRight size={32} /> : <ChevronLeft size={32} />}
         </button>
 
         <button 
           onClick={nextSlide}
-          className={`absolute right-4 md:right-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
+          className={`absolute end-4 md:end-12 z-50 p-3 rounded-full border border-current opacity-50 hover:opacity-100 transition-opacity ${currentSlide.textColor}`}
         >
-          <ChevronRight size={32} />
+          {locale === "ar" ? <ChevronLeft size={32} /> : <ChevronRight size={32} />}
         </button>
 
         <AnimatePresence initial={false} custom={direction}>
@@ -157,7 +159,7 @@ export default function HeroSection() {
               {/* Product Image */}
               <div className="absolute inset-0 z-30 md:drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] flex items-center justify-center">
                  {/* High-Performance Ground Cast Shadow */}
-                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,transparent_60%)] scale-y-[0.3] translate-y-[120px] sm:translate-y-[160px] z-0" />
+                 <div className="absolute top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 w-48 h-48 sm:w-64 sm:h-64 bg-[radial-gradient(circle,rgba(0,0,0,0.8)_0%,transparent_60%)] scale-y-[0.3] translate-y-[120px] sm:translate-y-[160px] z-0" />
                  
                  <Image 
                     src={currentSlide.image} 
@@ -172,13 +174,13 @@ export default function HeroSection() {
               <motion.div
                 animate={{ y: [-20, 20, -20], rotate: [0, 15, 0] }}
                 transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="hidden md:block absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
+                className="hidden md:block absolute top-0 end-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
                 style={{ willChange: "transform" }}
               />
               <motion.div
                  animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }}
                  transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                 className="hidden md:block absolute bottom-10 left-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
+                 className="hidden md:block absolute bottom-10 start-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
                  style={{ willChange: "transform" }}
               />
             </motion.div>
@@ -210,13 +212,13 @@ export default function HeroSection() {
             onClick={() => document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' })} 
             className={`px-6 py-3 md:px-8 md:py-4 rounded-full font-medium tracking-wide hover:scale-105 transition-transform duration-300 font-sans shadow-xl border ${currentSlide.textColor === 'text-white' ? 'bg-white text-black border-white/20' : 'bg-black text-white border-black/20'}`}
           >
-            Explore Menu
+            {t.hero.cta}
           </button>
         </motion.div>
       </AnimatePresence>
 
       {/* Carousel Indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-40">
+      <div className="absolute bottom-6 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 flex gap-3 z-40">
         {slides.map((_, i) => (
           <button 
             key={i} 
