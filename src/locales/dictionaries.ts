@@ -33,6 +33,11 @@ export const dictionaries = {
       subtitle: "Us",
       address: "Al Aqiq, Riyadh, Saudi Arabia",
       hours: "Open Daily: 7 AM - 12 AM",
+    },
+    footer: {
+      demoTag: "End of Demo",
+      demoMsg: "The full menu and additional features will be updated upon official launch.",
+      rights: "All rights reserved. LOCAIS Cafe.",
     }
   },
   ar: {
@@ -69,6 +74,11 @@ export const dictionaries = {
       subtitle: " ",
       address: "العقيق، الرياض، المملكة العربية السعودية",
       hours: "مفتوح يومياً: ٧ صباحاً - ١٢ منتصف الليل",
+    },
+    footer: {
+      demoTag: "نهاية النسخة التجريبية",
+      demoMsg: "سيتم تحديث القائمة الكاملة والميزات الإضافية عند الإطلاق الرسمي.",
+      rights: "جميع الحقوق محفوظة. مقهى لوكايس.",
     }
   }
 };

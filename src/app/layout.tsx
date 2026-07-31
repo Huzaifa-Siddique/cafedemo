@@ -31,8 +31,61 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${inter.variable} ${playfair.variable} ${cairo.variable} scroll-smooth antialiased bg-locais-900 text-locais-100`}
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                var saved = localStorage.getItem('locale');
+                if (saved === 'ar') {
+                  document.documentElement.dir = 'rtl';
+                  document.documentElement.lang = 'ar';
+                } else {
+                  document.documentElement.dir = 'ltr';
+                  document.documentElement.lang = 'en';
+                }
+              } catch (e) {}
+            `,
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "CafeOrCoffeeShop",
+              "name": "LOCAIS Cafe",
+              "image": "https://www.instagram.com/locais.sa",
+              "@id": "",
+              "url": "https://www.instagram.com/locais.sa",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Abdullah Al Kharji, Al Aqiq",
+                "addressLocality": "Riyadh",
+                "postalCode": "13515",
+                "addressCountry": "SA"
+              },
+              "openingHoursSpecification": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                  "Monday",
+                  "Tuesday",
+                  "Wednesday",
+                  "Thursday",
+                  "Friday",
+                  "Saturday",
+                  "Sunday"
+                ],
+                "opens": "07:00",
+                "closes": "23:59"
+              }
+            })
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col font-sans">
         <LanguageProvider>
           {children}

@@ -4,6 +4,7 @@ import FullMenu from "@/components/FullMenu";
 import AboutSection from "@/components/AboutSection";
 import LocationAndReviews from "@/components/LocationAndReviews";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       </div>
       <div id="about"><AboutSection /></div>
       <div id="location"><LocationAndReviews /></div>
+      <Footer />
     </main>
   );
 }

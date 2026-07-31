@@ -60,6 +60,11 @@ html {
   scroll-behavior: smooth;
 }
 
+[dir="rtl"] {
+  --font-sans: var(--font-cairo), sans-serif;
+  --font-display: var(--font-cairo), serif;
+}
+
 ::selection {
   background: var(--locais-600);
   color: #fff;
