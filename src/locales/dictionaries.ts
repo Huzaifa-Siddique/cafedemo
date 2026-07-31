@@ -1,6 +1,7 @@
 export const dictionaries = {
   en: {
     nav: {
+      home: "Home",
       menu: "Menu",
       about: "About",
       location: "Location",
@@ -36,6 +37,7 @@ export const dictionaries = {
   },
   ar: {
     nav: {
+      home: "الرئيسية",
       menu: "القائمة",
       about: "من نحن",
       location: "الموقع",

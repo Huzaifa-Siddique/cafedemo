@@ -10,6 +10,7 @@ export default function Navbar() {
   const { locale, setLocale, t } = useLanguage();
 
   const navLinks = [
+    { name: t.nav.home, href: "#home" },
     { name: t.nav.menu, href: "#menu" },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.location, href: "#location" },
