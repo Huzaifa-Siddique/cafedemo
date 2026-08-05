@@ -18,6 +18,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   useEffect(() => {
     const saved = localStorage.getItem("locale") as Locale;
     if (saved && (saved === "en" || saved === "ar")) {
+      // eslint-disable-next-line
       setLocaleState(saved);
     }
   }, []);
