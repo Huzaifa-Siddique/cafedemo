@@ -4,10 +4,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { useCart } from "../context/CartContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { locale, setLocale, t } = useLanguage();
+  const { cartItems, setIsCartOpen } = useCart();
+  const totalItems = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
   const navLinks = [
     { name: t.nav.home, href: "#home" },
@@ -16,9 +19,6 @@ export default function Navbar() {
     { name: t.nav.location, href: "#location" },
   ];
 
-  const toggleLanguage = () => {
-    setLocale(locale === "en" ? "ar" : "en");
-  };
 
   return (
     <>
@@ -31,7 +31,7 @@ export default function Navbar() {
       {/* Logo */}
       <Link href="#home" className="flex items-center">
         <span className="font-display text-2xl tracking-widest text-white drop-shadow-md">
-          LOCAIS
+          OASIS
         </span>
       </Link>
 
@@ -49,13 +49,22 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
-        {/* Language Toggle */}
-        <button
-          onClick={toggleLanguage}
-          aria-label={locale === "en" ? "Switch to Arabic" : "Switch to English"}
-          className="text-white/80 hover:text-white font-medium text-sm border border-white/20 rounded-full px-3 py-1 transition-colors bg-white/5"
+        {/* Cart Button */}
+        <button 
+          onClick={() => setIsCartOpen(true)}
+          className="relative text-white/80 hover:text-white p-2 transition-colors"
+          aria-label="Open Cart"
         >
-          {locale === "en" ? "عربي" : "EN"}
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <circle cx="9" cy="21" r="1"></circle>
+            <circle cx="20" cy="21" r="1"></circle>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+          </svg>
+          {totalItems > 0 && (
+            <span className="absolute -top-1 -right-1 bg-terracotta text-white text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+              {totalItems}
+            </span>
+          )}
         </button>
 
         {/* Mobile Menu Button */}
@@ -97,7 +106,7 @@ export default function Navbar() {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className="text-white text-lg font-medium tracking-wide uppercase transition-colors hover:text-locais-400"
+              className="text-white text-lg font-medium tracking-wide uppercase transition-colors hover:text-espo-400"
             >
               {link.name}
             </Link>
@@ -108,3 +117,4 @@ export default function Navbar() {
     </>
   );
 }
+

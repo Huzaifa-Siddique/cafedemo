@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display, Cairo } from "next/font/google";
 import "./globals.css";
 import { LanguageProvider } from "../context/LanguageContext";
+import { CartProvider } from "../context/CartContext";
+import CartDrawer from "../components/CartDrawer";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -19,8 +21,8 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: "LOCAIS Cafe | Riyadh",
-  description: "Experience the premium LOCAIS Cafe in Al Aqiq, Riyadh. Featuring our signature Honey Cake and Coffee of the Day.",
+  title: "Oasis Lounge",
+  description: "Experience the premium Oasis Lounge. Featuring our signature coffees and ambience.",
 };
 
 export default function RootLayout({
@@ -32,7 +34,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${inter.variable} ${playfair.variable} ${cairo.variable} scroll-smooth antialiased bg-locais-900 text-locais-100`}
+      className={`${inter.variable} ${playfair.variable} ${cairo.variable} scroll-smooth antialiased bg-espo-900 text-espo-100`}
     >
       <head>
         <script
@@ -57,16 +59,15 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "CafeOrCoffeeShop",
-              "name": "LOCAIS Cafe",
-              "image": "https://www.instagram.com/locais.sa",
+              "name": "Oasis Lounge",
+              "image": "https://source.unsplash.com/800x600/?Oasis+Lounge&sig=0",
               "@id": "",
-              "url": "https://www.instagram.com/locais.sa",
+              "url": "https://maps.app.goo.gl/trNkvw8fbUjTXrUn9",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Abdullah Al Kharji, Al Aqiq",
-                "addressLocality": "Riyadh",
-                "postalCode": "13515",
-                "addressCountry": "SA"
+                "streetAddress": "Oasis Lounge",
+                "addressLocality": "Pakistan",
+                "addressCountry": "PK"
               },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
@@ -88,7 +89,10 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <LanguageProvider>
-          {children}
+          <CartProvider>
+            {children}
+            <CartDrawer />
+          </CartProvider>
         </LanguageProvider>
       </body>
     </html>

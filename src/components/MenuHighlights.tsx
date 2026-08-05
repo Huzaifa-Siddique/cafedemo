@@ -5,52 +5,59 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import WaveDivider from "./WaveDivider";
 import { useLanguage } from "../context/LanguageContext";
+import { useCart } from "../context/CartContext";
+import { ShoppingCart } from "lucide-react";
 
 export default function MenuHighlights() {
   const { locale, t } = useLanguage();
+  const { addToCart } = useCart();
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(0);
 
   const menuItems = [
     {
-      id: "honey-cake",
-      title: locale === "ar" ? "كيكة العسل المميزة" : "Signature Honey Cake",
-      price: locale === "ar" ? "٣٥ ريال" : "SAR 35",
-      desc: locale === "ar" ? "طبقات من كيكة العسل المكرملة وتغطية الكريمة الحامضة المخملية." : "Layers of caramelized honey sponge and velvety sour cream frosting.",
-      image: "/images/honey_cake_1785415872758_transparent.png",
+      id: "signature-v60",
+      title: locale === "ar" ? "في 60 المميزة" : "Signature V60",
+      price: locale === "ar" ? "٣٥٠ روبية" : "PKR 350",
+      numericPrice: 350,
+      desc: locale === "ar" ? "بن مختص محضر بعناية يدوياً لتعزيز النكهات الإيحائية." : "Premium specialty beans hand-poured to enhance tasting notes.",
+      image: "/images/specialty_coffee_1785415898575_transparent.png",
       bgColor: "bg-gradient-to-b from-terracotta to-[#753c2b]",
       textColor: "text-white",
     },
     {
-      id: "medovik",
-      title: locale === "ar" ? "ميدوفيك الكلاسيكية" : "Classic Medovik",
-      price: locale === "ar" ? "٣٨ ريال" : "SAR 38",
-      desc: locale === "ar" ? "وصفة روسية تقليدية مع طبقة رقيقة من الفتات." : "Traditional Russian recipe with a delicate crumb coating.",
-      image: "/images/medovik_1785415886099_transparent.png",
+      id: "cortado",
+      title: locale === "ar" ? "كورتادو كلاسيك" : "Classic Cortado",
+      price: locale === "ar" ? "٣٨٠ روبية" : "PKR 380",
+      numericPrice: 380,
+      desc: locale === "ar" ? "إسبريسو غني مع كمية متساوية من الحليب المبخر بسلاسة." : "Rich espresso cut with an equal amount of silky steamed milk.",
+      image: "/images/real_internet_coffee.png",
       bgColor: "bg-gradient-to-b from-sand to-[#b5a386]",
-      textColor: "text-locais-900",
+      textColor: "text-espo-900",
     },
     {
       id: "coffee",
       title: locale === "ar" ? "قهوة مختصة" : "Specialty Coffee",
-      price: locale === "ar" ? "٢٢ ريال" : "SAR 22",
+      price: locale === "ar" ? "٢٢٠ روبية" : "PKR 220",
+      numericPrice: 220,
       desc: locale === "ar" ? "حبوب بن محمصة بعناية ومحضرة بإتقان بواسطة خبراء القهوة لدينا." : "Premium roasted beans crafted to perfection by our master baristas.",
-      image: "/images/specialty_coffee_1785415898575_transparent.png",
+      image: "/images/hero_coffee_1785415845728_transparent.png",
       bgColor: "bg-gradient-to-b from-sage to-[#4a6353]",
       textColor: "text-white",
     },
     {
       id: "croissant",
       title: locale === "ar" ? "كرواسون طازج" : "Fresh Croissant",
-      price: locale === "ar" ? "١٨ ريال" : "SAR 18",
+      price: locale === "ar" ? "١٨٠ روبية" : "PKR 180",
+      numericPrice: 180,
       desc: locale === "ar" ? "طبقات هشة ومقرمشة تُخبز طازجة كل صباح." : "Flaky, buttery perfection baked fresh every morning.",
       image: "/images/croissant_1785415912494_transparent.png",
       bgColor: "bg-gradient-to-b from-gold to-[#94783b]",
-      textColor: "text-locais-900",
+      textColor: "text-espo-900",
     },
   ];
 
   return (
-    <div id="menu" className="relative w-full bg-locais-900 pt-32 pb-32 overflow-hidden">
+    <div id="menu" className="relative w-full bg-espo-900 pt-32 pb-32 overflow-hidden">
       
       <div className="hidden md:block absolute inset-0 z-0 opacity-40 pointer-events-none">
          <motion.div 
@@ -71,7 +78,7 @@ export default function MenuHighlights() {
       </div>
 
       <div className="relative z-10 w-full max-w-[1600px] mx-auto px-4 md:px-8 mb-12">
-         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-locais-100 mb-4 text-center drop-shadow-lg">
+         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-espo-100 mb-4 text-center drop-shadow-lg">
            {t.menuHighlights.title} <span className="italic text-terracotta">{t.menuHighlights.subtitle}</span>
          </h2>
       </div>
@@ -143,7 +150,19 @@ export default function MenuHighlights() {
                         <h3 className="font-display text-xl md:text-3xl lg:text-4xl leading-tight drop-shadow-md">
                           {item.title}
                         </h3>
-                        <span className="font-sans font-bold text-lg md:text-xl drop-shadow-md whitespace-nowrap ms-4">{item.price}</span>
+                        <div className="flex items-center gap-4">
+                          <span className="font-sans font-bold text-lg md:text-xl drop-shadow-md whitespace-nowrap">{item.price}</span>
+                          <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              addToCart({ id: item.id, title: item.title, price: item.numericPrice, image: item.image });
+                            }}
+                            className="bg-white/10 hover:bg-white/20 p-2 rounded-full backdrop-blur-sm transition-transform hover:scale-110 border border-white/20 shadow-[0_4px_14px_rgba(0,0,0,0.2)]"
+                            aria-label="Add to cart"
+                          >
+                            <ShoppingCart size={20} />
+                          </button>
+                        </div>
                       </div>
                       <p className="font-sans text-xs md:text-base opacity-90 max-w-sm mb-4 md:mb-6 drop-shadow-sm">
                         {item.desc}
@@ -170,3 +189,4 @@ export default function MenuHighlights() {
     </div>
   );
 }
+

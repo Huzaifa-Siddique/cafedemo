@@ -2,11 +2,13 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Plus, Star } from "lucide-react";
+import { Plus, Star, ShoppingCart } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
+import { useCart } from "../context/CartContext";
 
 export default function FullMenu() {
   const { locale, t } = useLanguage();
+  const { addToCart } = useCart();
   const [activeCategory, setActiveCategory] = useState(locale === "ar" ? "الكل" : "All");
 
   const menuCategories = [
@@ -19,36 +21,40 @@ export default function FullMenu() {
   const fullMenuItems = [
     {
       id: 1,
-      title: locale === "ar" ? "كيكة العسل المميزة" : "Signature Honey Cake",
-      category: t.fullMenu.dessert,
-      price: locale === "ar" ? "٣٥ ريال" : "SAR 35",
+      title: locale === "ar" ? "في 60 المميزة" : "Signature V60",
+      category: t.fullMenu.coffee,
+      price: locale === "ar" ? "٣٥٠ روبية" : "PKR 350",
+      numericPrice: 350,
       rating: 5.0,
       reviews: 124,
-      image: "/images/honey_cake_1785415872758_transparent.png",
+      image: "/images/specialty_coffee_1785415898575_transparent.png",
     },
     {
       id: 2,
-      title: locale === "ar" ? "ميدوفيك الكلاسيكية" : "Classic Medovik",
-      category: t.fullMenu.dessert,
-      price: locale === "ar" ? "٣٨ ريال" : "SAR 38",
+      title: locale === "ar" ? "كورتادو كلاسيك" : "Classic Cortado",
+      category: t.fullMenu.coffee,
+      price: locale === "ar" ? "٣٨٠ روبية" : "PKR 380",
+      numericPrice: 380,
       rating: 4.8,
       reviews: 89,
-      image: "/images/medovik_1785415886099_transparent.png",
+      image: "/images/real_internet_coffee.png",
     },
     {
       id: 3,
-      title: locale === "ar" ? "قهوة مختصة" : "Specialty Coffee",
-      category: t.fullMenu.coffee,
-      price: locale === "ar" ? "٢٢ ريال" : "SAR 22",
+      title: locale === "ar" ? "براوني الشوكولاتة" : "Chocolate Brownie",
+      category: t.fullMenu.dessert,
+      price: locale === "ar" ? "٢٢٠ روبية" : "PKR 220",
+      numericPrice: 220,
       rating: 4.9,
       reviews: 210,
-      image: "/images/specialty_coffee_1785415898575_transparent.png",
+      image: "/images/honey_cake_1785415872758_transparent.png",
     },
     {
       id: 4,
       title: locale === "ar" ? "كرواسون طازج" : "Fresh Croissant",
       category: locale === "ar" ? "معجنات" : "Pastries",
-      price: locale === "ar" ? "١٨ ريال" : "SAR 18",
+      price: locale === "ar" ? "١٨٠ روبية" : "PKR 180",
+      numericPrice: 180,
       rating: 4.7,
       reviews: 156,
       image: "/images/croissant_1785415912494_transparent.png",
@@ -65,7 +71,7 @@ export default function FullMenu() {
         
         {/* Header & Categories */}
         <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-6">
-          <h2 className="font-display text-4xl md:text-5xl text-locais-100">
+          <h2 className="font-display text-4xl md:text-5xl text-espo-100">
             {t.fullMenu.title} <span className="italic text-terracotta">{t.fullMenu.subtitle}</span>
           </h2>
           
@@ -74,7 +80,7 @@ export default function FullMenu() {
               <button 
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-6 py-2 rounded-full whitespace-nowrap font-medium text-sm transition-colors ${activeCategory === cat ? 'bg-terracotta text-white' : 'bg-[#0A2628] text-locais-300 hover:text-white'}`}
+                className={`px-6 py-2 rounded-full whitespace-nowrap font-medium text-sm transition-colors ${activeCategory === cat ? 'bg-terracotta text-white' : 'bg-[#0A2628] text-espo-300 hover:text-white'}`}
               >
                 {cat}
               </button>
@@ -99,7 +105,7 @@ export default function FullMenu() {
 
               {/* Content */}
               <div className="mt-4 flex flex-col flex-1">
-                <p className="text-locais-400 text-sm font-sans uppercase tracking-wider mb-1">{item.category}</p>
+                <p className="text-espo-400 text-sm font-sans uppercase tracking-wider mb-1">{item.category}</p>
                 <h3 className="font-display text-2xl text-white mb-2 leading-tight">{item.title}</h3>
                 
                 {/* Reviews */}
@@ -107,12 +113,19 @@ export default function FullMenu() {
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} size={14} className={`${i < Math.floor(item.rating) ? 'fill-gold text-gold' : 'fill-white/10 text-white/10'}`} />
                   ))}
-                  <span className="text-locais-300 text-xs ms-1">({item.reviews})</span>
+                  <span className="text-espo-300 text-xs ms-1">({item.reviews})</span>
                 </div>
                 
-                {/* Footer (Price) */}
-                <div className="mt-auto flex justify-between items-end">
+                {/* Footer (Price & Add to Cart) */}
+                <div className="mt-auto flex justify-between items-center">
                   <span className="font-sans font-bold text-xl text-white">{item.price}</span>
+                  <button 
+                    onClick={() => addToCart({ id: item.id.toString(), title: item.title, price: item.numericPrice, image: item.image })}
+                    className="bg-terracotta hover:bg-[#8f4633] text-white p-2 rounded-full transition-transform hover:scale-110 active:scale-95 shadow-[0_4px_14px_rgba(169,90,66,0.4)]"
+                    aria-label="Add to cart"
+                  >
+                    <ShoppingCart size={18} />
+                  </button>
                 </div>
               </div>
             </div>
@@ -123,3 +136,4 @@ export default function FullMenu() {
     </section>
   );
 }
+
