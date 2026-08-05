@@ -32,7 +32,7 @@ export const dictionaries = {
     location: {
       title: "Find",
       subtitle: "Us",
-      address: "Oasis Lounge, Pakistan",
+      address: "Oasis Lounge, King Abdullah Financial District, Riyadh, Saudi Arabia",
       hours: "Open Daily 7:00 AM - Midnight",
     },
     footer: {

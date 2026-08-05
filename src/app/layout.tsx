@@ -66,8 +66,8 @@ export default function RootLayout({
               "address": {
                 "@type": "PostalAddress",
                 "streetAddress": "Oasis Lounge",
-                "addressLocality": "Pakistan",
-                "addressCountry": "PK"
+                "addressLocality": "Saudi Arabia",
+                "addressCountry": "SA"
               },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",
