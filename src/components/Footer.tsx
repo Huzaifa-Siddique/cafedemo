@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "../context/LanguageContext";
+import { Instagram } from "lucide-react";
 
 export default function Footer() {
   const { t, locale } = useLanguage();
@@ -14,7 +15,7 @@ export default function Footer() {
         <span className="text-sm font-medium text-locais-100 uppercase tracking-wider">{t.footer.demoTag}</span>
       </div>
 
-      <h2 className="font-display text-4xl md:text-5xl text-white mb-6">LOCAIS</h2>
+      <h2 className="font-display text-4xl md:text-5xl text-white mb-6">OASIS</h2>
       
       <p className="font-sans text-locais-300 max-w-md mx-auto mb-10 leading-relaxed text-sm md:text-base">
         {t.footer.demoMsg}
@@ -22,19 +23,12 @@ export default function Footer() {
 
       {/* Socials / Contact */}
       <div className="flex items-center justify-center gap-6 mb-12">
-        <a 
-          href="https://www.instagram.com/locais.sa?igshid=MzRlODBiNWFlZA%3D%3D"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-locais-400 hover:text-white transition-colors"
+        <div 
+          className="text-locais-400 hover:text-white transition-colors cursor-default"
           aria-label="Instagram"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
+          <Instagram size={24} strokeWidth={1.5} />
+        </div>
         <a 
           href="https://maps.google.com/?q=LOCAIS,+Abdullah+Al+Kharji,+Al+Aqiq,+Riyadh+13515,+Saudi+Arabia"
           target="_blank"

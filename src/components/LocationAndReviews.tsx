@@ -39,11 +39,8 @@ export default function LocationAndReviews() {
             >
               {locale === "ar" ? "احصل على الاتجاهات" : "Get Directions"}
             </a>
-            <a 
-              href="https://www.instagram.com/locais.sa?igshid=MzRlODBiNWFlZA%3D%3D"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-14 h-14 bg-locais-800 text-locais-100 flex items-center justify-center rounded-full hover:bg-locais-700 transition-colors border border-locais-700/50"
+            <div 
+              className="w-14 h-14 bg-locais-800 text-locais-100 flex items-center justify-center rounded-full border border-locais-700/50 cursor-default"
               aria-label="Instagram"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -51,7 +48,7 @@ export default function LocationAndReviews() {
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
               </svg>
-            </a>
+            </div>
           </div>
         </motion.div>
 
@@ -61,19 +58,25 @@ export default function LocationAndReviews() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex-1 w-full bg-[#051F20] rounded-[2rem] min-h-[400px] md:min-h-[600px] flex items-center justify-center overflow-hidden border border-white/5 relative shadow-2xl"
+          className="flex-1 w-full flex flex-col"
         >
-           <iframe 
-             src="https://maps.google.com/maps?q=LOCAIS,+Abdullah+Al+Kharji,+Al+Aqiq,+Riyadh+13515,+Saudi+Arabia&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-             width="100%" 
-             height="100%" 
-             style={{ border: 0 }} 
-             allowFullScreen={false} 
-             loading="lazy" 
-             referrerPolicy="no-referrer-when-downgrade"
-             className="absolute inset-0"
-           ></iframe>
-           <div className="absolute inset-0 pointer-events-none bg-locais-900/20" />
+          <div className="w-full bg-[#051F20] rounded-3xl min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden border border-white/5 relative shadow-2xl">
+            <iframe 
+              src="https://maps.google.com/maps?q=King+Abdullah+Financial+District,+Riyadh&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={false} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              className="absolute inset-0"
+            ></iframe>
+            <div className="absolute inset-0 pointer-events-none bg-locais-900/20" />
+          </div>
+          
+          <p className="text-xs italic text-white/60 text-center mt-4 font-sans">
+            Note: This is a master prototype. The map location, branding, and menu items are placeholders for demonstration purposes.
+          </p>
         </motion.div>
       </div>
     </section>
