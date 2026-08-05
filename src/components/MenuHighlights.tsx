@@ -17,7 +17,7 @@ export default function MenuHighlights() {
     {
       id: "signature-v60",
       title: locale === "ar" ? "في 60 المميزة" : "Signature V60",
-      price: locale === "ar" ? "٣٥٠ روبية" : "PKR 350",
+      price: locale === "ar" ? "٣٥٠ ريال" : "SAR 350",
       numericPrice: 350,
       desc: locale === "ar" ? "بن مختص محضر بعناية يدوياً لتعزيز النكهات الإيحائية." : "Premium specialty beans hand-poured to enhance tasting notes.",
       image: "/images/specialty_coffee_1785415898575_transparent.png",
@@ -27,7 +27,7 @@ export default function MenuHighlights() {
     {
       id: "cortado",
       title: locale === "ar" ? "كورتادو كلاسيك" : "Classic Cortado",
-      price: locale === "ar" ? "٣٨٠ روبية" : "PKR 380",
+      price: locale === "ar" ? "٣٨٠ ريال" : "SAR 380",
       numericPrice: 380,
       desc: locale === "ar" ? "إسبريسو غني مع كمية متساوية من الحليب المبخر بسلاسة." : "Rich espresso cut with an equal amount of silky steamed milk.",
       image: "/images/real_internet_coffee.png",
@@ -37,7 +37,7 @@ export default function MenuHighlights() {
     {
       id: "coffee",
       title: locale === "ar" ? "قهوة مختصة" : "Specialty Coffee",
-      price: locale === "ar" ? "٢٢٠ روبية" : "PKR 220",
+      price: locale === "ar" ? "٢٢٠ ريال" : "SAR 220",
       numericPrice: 220,
       desc: locale === "ar" ? "حبوب بن محمصة بعناية ومحضرة بإتقان بواسطة خبراء القهوة لدينا." : "Premium roasted beans crafted to perfection by our master baristas.",
       image: "/images/hero_coffee_1785415845728_transparent.png",
@@ -47,7 +47,7 @@ export default function MenuHighlights() {
     {
       id: "croissant",
       title: locale === "ar" ? "كرواسون طازج" : "Fresh Croissant",
-      price: locale === "ar" ? "١٨٠ روبية" : "PKR 180",
+      price: locale === "ar" ? "١٨٠ ريال" : "SAR 180",
       numericPrice: 180,
       desc: locale === "ar" ? "طبقات هشة ومقرمشة تُخبز طازجة كل صباح." : "Flaky, buttery perfection baked fresh every morning.",
       image: "/images/croissant_1785415912494_transparent.png",

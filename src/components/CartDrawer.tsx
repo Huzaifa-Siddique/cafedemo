@@ -27,10 +27,10 @@ export default function CartDrawer() {
     
     message += `----------------\n`;
     cartItems.forEach(item => {
-      message += `${item.quantity}x ${item.title} - ${item.price} PKR\n`;
+      message += `${item.quantity}x ${item.title} - ${item.price} SAR\n`;
     });
     message += `----------------\n`;
-    message += `*Total: ${cartTotal} PKR*\n`;
+    message += `*Total: ${cartTotal} SAR*\n`;
 
     if (instructions.trim()) {
       message += `Note: ${instructions}\n`;
@@ -58,7 +58,8 @@ export default function CartDrawer() {
             initial={{ x: dir === "rtl" ? "-100%" : "100%" }}
             animate={{ x: 0 }}
             exit={{ x: dir === "rtl" ? "-100%" : "100%" }}
-            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            transition={{ type: "tween", ease: "circOut", duration: 0.35 }}
+            style={{ willChange: "transform" }}
             className="fixed top-0 bottom-0 end-0 z-[101] w-full max-w-md bg-espo-900 border-s border-white/10 shadow-2xl flex flex-col"
           >
             {/* Header */}
@@ -87,7 +88,7 @@ export default function CartDrawer() {
                       )}
                       <div className="flex-1">
                         <h4 className="text-white font-medium">{item.title}</h4>
-                        <p className="text-terracotta text-sm font-semibold">{item.price} PKR</p>
+                        <p className="text-terracotta text-sm font-semibold">{item.price} SAR</p>
                       </div>
                       
                       {/* Quantity Controls */}
@@ -187,7 +188,7 @@ export default function CartDrawer() {
               <div className="p-6 border-t border-white/10 bg-black/20">
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-white/70">{t.cart.total}</span>
-                  <span className="text-2xl font-bold text-white">{cartTotal} PKR</span>
+                  <span className="text-2xl font-bold text-white">{cartTotal} SAR</span>
                 </div>
                 <button 
                   onClick={handleCheckout}
