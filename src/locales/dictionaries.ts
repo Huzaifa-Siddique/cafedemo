@@ -8,7 +8,7 @@ export const dictionaries = {
     },
     hero: {
       title: "Oasis Lounge",
-      subtitle: "Experience perfectly crafted beverages and exquisite desserts in the heart of Hyderabad.",
+      subtitle: "Experience perfectly crafted beverages and exquisite desserts in the heart of Riyadh.",
       cta: "Explore Menu",
     },
     menuHighlights: {
@@ -62,7 +62,7 @@ export const dictionaries = {
     },
     hero: {
       title: "واحة لاونج",
-      subtitle: "استمتع بتجربة المشروبات المحضرة بإتقان والحلويات الرائعة في قلب حيدر أباد.",
+      subtitle: "استمتع بتجربة المشروبات المحضرة بإتقان والحلويات الرائعة في قلب الرياض.",
       cta: "استكشف القائمة",
     },
     menuHighlights: {
@@ -81,12 +81,12 @@ export const dictionaries = {
       title: "تجربة",
       subtitle: "الواحة",
       p1: "في الواحة، نؤمن بأن كل كوب قهوة يحكي قصة. من حبوب البن المختارة بعناية إلى حلوياتنا المصنوعة ببراعة، كل تفصيلة مصممة لإسعادك.",
-      p2: "يقع مقهانا في حيدر أباد، وهو واحة من الهدوء والأناقة العصرية، مثالي لروتينك الصباحي أو للاسترخاء المسائي.",
+      p2: "يقع مقهانا في الرياض، وهو واحة من الهدوء والأناقة العصرية، مثالي لروتينك الصباحي أو للاسترخاء المسائي.",
     },
     location: {
       title: "موقعنا",
       subtitle: " ",
-      address: "حيدر أباد، السند، باكستان",
+      address: "الرياض، المملكة العربية السعودية",
       hours: "مفتوح يومياً: ٧ صباحاً - ١٢ منتصف الليل",
     },
     footer: {
