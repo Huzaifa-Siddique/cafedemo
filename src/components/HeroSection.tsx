@@ -22,7 +22,7 @@ export default function HeroSection() {
       textColor: "text-white",
       accentText: "text-locais-400",
       bgText: "text-locais-600/30",
-      scaleClass: "scale-75 md:scale-90 translate-y-8",
+      scaleClass: "scale-[1.2] md:scale-[1.3] translate-y-4",
     },
     {
       id: "honey",
