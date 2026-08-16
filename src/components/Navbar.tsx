@@ -49,6 +49,15 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center gap-4">
+        {/* Language Toggle */}
+        <button
+          onClick={() => setLocale(locale === 'en' ? 'ar' : 'en')}
+          className="text-white/80 hover:text-white font-semibold text-sm uppercase transition-colors"
+          aria-label="Toggle language"
+        >
+          {locale === 'en' ? 'عربي' : 'EN'}
+        </button>
+
         {/* Cart Button */}
         <button 
           onClick={() => setIsCartOpen(true)}
