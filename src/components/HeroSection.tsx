@@ -153,11 +153,7 @@ export default function HeroSection() {
             style={{ willChange: "transform, opacity" }}
           >
             {/* 3D Floating Product Container */}
-            <motion.div 
-              className="relative w-[280px] h-[280px] md:w-[500px] md:h-[500px]"
-              animate={{ y: [-15, 15, -15] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            >
+            <div className="relative w-[280px] h-[280px] md:w-[500px] md:h-[500px] animate-float">
               {/* Product Image */}
               <div className="absolute inset-0 z-30 md:drop-shadow-[0_30px_50px_rgba(0,0,0,0.6)] flex items-center justify-center">
                  {/* High-Performance Ground Cast Shadow */}
@@ -173,19 +169,15 @@ export default function HeroSection() {
               </div>
               
               {/* Floating Accents (Bobbing at different speeds) */}
-              <motion.div
-                animate={{ y: [-20, 20, -20], rotate: [0, 15, 0] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="hidden md:block absolute top-0 end-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20"
+              <div
+                className="hidden md:block absolute top-0 end-0 w-24 h-24 md:w-32 md:h-32 bg-[radial-gradient(circle,rgba(255,255,255,0.4)_0%,transparent_70%)] rounded-full z-20 animate-float-fast"
                 style={{ willChange: "transform" }}
               />
-              <motion.div
-                 animate={{ y: [20, -20, 20], rotate: [0, -10, 0] }}
-                 transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                 className="hidden md:block absolute bottom-10 start-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20"
+              <div
+                 className="hidden md:block absolute bottom-10 start-0 w-32 h-32 md:w-48 md:h-48 bg-[radial-gradient(circle,rgba(0,0,0,0.4)_0%,transparent_70%)] rounded-full z-20 animate-float-reverse"
                  style={{ willChange: "transform" }}
               />
-            </motion.div>
+            </div>
           </motion.div>
         </AnimatePresence>
       </div>
