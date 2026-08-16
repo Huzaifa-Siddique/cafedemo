@@ -13,11 +13,11 @@ export default function HeroSection() {
 
   const slides = [
     {
-      id: "coffee",
-      title: locale === "ar" ? "قهوة لوكايس" : "Signature Locais Coffee",
-      subtitle: locale === "ar" ? "مزيج غني ومحضر بإتقان." : "A smooth, rich blend crafted to perfection.",
+      id: "matcha",
+      title: locale === "ar" ? "ماتشا لاتيه" : "Signature Matcha Latte",
+      subtitle: locale === "ar" ? "مزيج غني ومحضر بإتقان." : "A smooth, earthy blend crafted to perfection.",
       desc: t.hero.subtitle,
-      image: "/images/real_internet_coffee.png",
+      image: "/images/motcha latte.PNG",
       bgColor: "bg-[#051F20]",
       textColor: "text-white",
       accentText: "text-locais-400",
